@@ -23,12 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install book-summary from cargo
-        uses: baptiste0928/cargo-install@v2
-        with:
-          crate: book-summary
-      - run: book-summary -n ./src -s cryptkeeper guides references -y
-
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
@@ -39,6 +33,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build with mdBook
         run: mdbook build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
